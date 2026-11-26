@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CAP SÉPARATION : un accompagnement administratif pour se séparer dignement et recommencer sereinement.">
+<title>CAP SÉPARATION — Se séparer dignement</title>
+
+<style>
+:root {
+  --navy:#172b42;
+  --blue:#315d79;
+  --teal:#5c9189;
+  --cream:#f7f5ef;
+  --white:#fff;
+  --ink:#253344;
+  --muted:#6d7883;
+  --line:#e4e8e9;
+  --gold:#c49b62;
+  --danger:#a83c3c;
+  --radius:18px;
+  --shadow:0 12px 35px rgba(23,43,66,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;
+}
+.logo{
+  font-size:21px;font-weight:800;letter-spacing:1px;
+  color:var(--navy);text-decoration:none;
+}
+.logo span{color:var(--teal)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:13px;font-weight:700;
+  color:var(--navy);
+}
+.nav-links a:hover{color:var(--teal)}
+.menu-btn{display:none;border:0;background:none;font-size:25px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 20px;border-radius:10px;border:1px solid transparent;
+  background:var(--navy);color:white;text-decoration:none;
+  font-weight:700;font-size:14px;transition:.2s;
+}
+.btn:hover{transform:translateY(-2px);opacity:.92}
+.btn.secondary{background:transparent;color:var(--navy);border-color:#b9c5cd}
+.btn.teal{background:var(--teal)}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.small{padding:9px 14px;font-size:12px}
+.hero{
+  padding:92px 0 80px;
+  background:linear-gradient(120deg,#edf2ef 0%,#f7f5ef 60%,#e9eff1 100%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.eyebrow{
+  color:var(--teal);font-size:12px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+}
+h1{
+  color:var(--navy);font-size:clamp(38px,5vw,62px);
+  line-height:1.08;letter-spacing:-2px;margin:18px 0;
+}
+h2{font-size:clamp(27px,3vw,38px);line-height:1.2;color:var(--navy);margin:0 0 16px}
+h3{color:var(--navy);margin:0 0 10px}
+.lead{font-size:18px;color:#586777;max-width:620px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-card{
+  background:white;padding:30px;border-radius:24px;
+  box-shadow:var(--shadow);border:1px solid #e8ecea;
+}
+.hero-card .big{font-size:40px;margin-bottom:12px}
+.hero-card p{color:var(--muted);font-size:14px}
+.hero-points{display:grid;gap:16px;margin-top:24px}
+.hero-point{display:flex;gap:12px;align-items:flex-start}
+.check{
+  width:27px;height:27px;flex:none;border-radius:50%;
+  display:grid;place-items:center;background:#e4f0eb;color:var(--teal);
+  font-weight:800;
+}
+section{padding:78px 0}
+.section-intro{max-width:700px;margin-bottom:35px}
+.section-intro p{color:var(--muted)}
+.white{background:white}
+.navy{background:var(--navy);color:white}
+.navy h2,.navy h3{color:white}
+.navy p{color:#d2dce4}
+.center{text-align:center}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:white;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;box-shadow:0 5px 20px rgba(23,43,66,.035);
+}
+.card p{color:var(--muted);font-size:14px}
+.icon{
+  width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;background:#eaf1ee;
+  font-size:21px;margin-bottom:18px;
+}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{padding:22px;background:#f7f8f6;border-radius:15px}
+.step-number{
+  color:var(--teal);font-weight:900;font-size:13px;
+  letter-spacing:1px;margin-bottom:12px;
+}
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.price-card{
+  background:white;border:1px solid var(--line);border-radius:18px;
+  padding:24px;display:flex;flex-direction:column;
+}
+.price-card.featured{border:2px solid var(--teal);transform:translateY(-7px)}
+.price{font-size:34px;font-weight:800;color:var(--navy);margin:12px 0}
+.price small{font-size:13px;font-weight:400;color:var(--muted)}
+.price-card ul{padding-left:18px;color:#5e6a76;font-size:13px;flex:1}
+.price-card li{margin:8px 0}
+.price-card .btn{width:100%;margin-top:16px}
+.tag{
+  display:inline-block;padding:5px 9px;border-radius:20px;
+  background:#e9f2ee;color:#477c70;font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.notice{
+  padding:17px 20px;border-left:4px solid var(--gold);
+  background:#fbf6ed;border-radius:7px;color:#67583e;font-size:13px;
+}
+.observer{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+}
+.observer-visual{
+  min-height:270px;border-radius:24px;
+  background:linear-gradient(145deg,#294b61,#5c9189);
+  color:white;padding:32px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.observer-visual strong{font-size:35px;line-height:1.1}
+.observer-visual span{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:15px}
+.faq{max-width:800px;margin:auto}
+details{
+  background:white;border:1px solid var(--line);border-radius:12px;
+  padding:17px 20px;margin:10px 0;
+}
+summary{cursor:pointer;font-weight:700;color:var(--navy)}
+details p{color:var(--muted);font-size:14px}
+footer{background:#102236;color:#d5dfe6;padding:45px 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer a{color:#d5dfe6;text-decoration:none;font-size:13px}
+footer p{font-size:13px;color:#b9c7d1}
+.footer-title{font-weight:800;color:white;margin-bottom:12px}
+.smallprint{font-size:11px;color:#aab8c3;margin-top:25px}
+
+/* DIAGNOSTIC */
+#diagnostic{background:#edf2ef}
+.diagnostic-shell{
+  max-width:760px;margin:auto;background:white;border-radius:24px;
+  box-shadow:var(--shadow);padding:clamp(22px,5vw,45px);
+}
+.diagnostic-top{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.progress-track{height:7px;background:#e9edef;border-radius:10px;margin:20px 0 35px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:var(--teal);transition:.3s}
+.question-count{font-size:12px;color:var(--muted);font-weight:700}
+.question-title{font-size:25px;color:var(--navy);line-height:1.25;margin-bottom:10px}
+.question-help{color:var(--muted);font-size:14px;margin-bottom:25px}
+.options{display:grid;gap:10px}
+.option{
+  width:100%;text-align:left;padding:16px 17px;border-radius:12px;
+  background:white;border:1px solid #dfe5e7;color:var(--ink);
+  transition:.15s;
+}
+.option:hover{border-color:var(--teal);background:#f5faf7}
+.option.selected{border:2px solid var(--teal);background:#edf6f1}
+.option strong{display:block;color:var(--navy);font-size:14px}
+.option span{font-size:12px;color:var(--muted)}
+.diagnostic-actions{display:flex;justify-content:space-between;gap:12px;margin-top:30px}
+.diagnostic-actions button:disabled{opacity:.35;cursor:not-allowed}
+.result{display:none}
+.result h3{font-size:22px}
+.result-block{padding:18px;background:#f5f7f5;border-radius:13px;margin:13px 0}
+.result-block h4{margin:0 0 8px;color:var(--navy)}
+.result-block p,.result-block li{font-size:14px;color:#566574}
+.result ul{padding-left:20px}
+.safety-alert{
+  background:#fff0ee;border:1px solid #efc6c1;
+  padding:20px;border-radius:14px;margin:20px 0;
+}
+.safety-alert h3{color:var(--danger)}
+.safety-alert a{color:var(--danger);font-weight:700}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.disclaimer{font-size:11px;color:#7a858d;margin-top:22px}
+.hidden{display:none!important}
+.mobile-only{display:none}
+
+@media(max-width:850px){
+  .nav-links{
+    display:none;position:absolute;top:76px;left:0;right:0;
+    background:white;padding:22px;flex-direction:column;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .hero-grid,.observer{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .prices{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  section{padding:58px 0}
+  .hero{padding:65px 0}
+  .cards,.prices,.steps{grid-template-columns:1fr}
+  .price-card.featured{transform:none}
+  .footer-grid{grid-template-columns:1fr}
+  .nav .btn{display:none}
+  .question-title{font-size:22px}
+}
+@media print{
+  header,footer,.no-print,.diagnostic-actions,.result-actions{display:none!important}
+  body{background:white}
+  #diagnostic{padding:0;background:white}
+  .diagnostic-shell{box-shadow:none;border:0;max-width:100%;padding:0}
+  .result{display:block!important}
+  .result-block{break-inside:avoid}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#accueil">CAP <span>SÉPARATION</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#fonctionnement">Fonctionnement</a>
+      <a href="#offres">Nos offres</a>
+      <a href="#observatoire">L'Observatoire</a>
+      <a href="#mission">Notre mission</a>
+      <a href="#ressources">Ressources</a>
+      <a href="#diagnostic">Diagnostic gratuit</a>
+    </nav>
+    <a class="btn small" href="#diagnostic">Commencer gratuitement</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Un nouveau départ commence ici</div>
+      <h1>Se séparer dignement.<br>Recommencer sereinement.</h1>
+      <p class="lead">
+        Une séparation est déjà une épreuve. Les démarches administratives,
+        les informations dispersées et les dépenses ne devraient pas la rendre
+        encore plus difficile.
+      </p>
+      <p class="lead">
+        CAP SÉPARATION vous aide à y voir clair, à organiser vos démarches
+        et à mieux maîtriser votre budget.
+      </p>
+      <div class="hero-actions">
+        <a class="btn teal" href="#diagnostic">Faire mon diagnostic gratuit</a>
+        <a class="btn secondary" href="#fonctionnement">Découvrir CAP SÉPARATION</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="big">🧭</div>
+      <h3>Vous ne savez pas par où commencer ?</h3>
+      <p>En quelques questions, obtenez une première feuille de route adaptée à votre situation.</p>
+      <div class="hero-points">
+        <div class="hero-point"><span class="check">✓</span><div><strong>Comprendre</strong><br><small>Les grandes étapes de votre séparation.</small></div></div>
+        <div class="hero-point"><span class="check">✓</span><div><strong>Anticiper</strong><br><small>Les documents et les frais à prévoir.</small></div></div>
+        <div class="hero-point"><span class="check">✓</span><div><strong>Organiser</strong><br><small>Vos démarches à votre rythme.</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fonctionnement" class="white">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">Un parcours plus clair</div>
+      <h2>Un accompagnement simple, étape par étape</h2>
+      <p>Notre rôle est de vous aider à organiser le parcours administratif de votre séparation, sans remplacer les professionnels du droit.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-number">01 — COMPRENDRE</div><h3>Faites le point</h3><p>Un diagnostic gratuit pour identifier votre situation et vos priorités.</p></div>
+      <div class="step"><div class="step-number">02 — ORGANISER</div><h3>Préparez vos démarches</h3><p>Une feuille de route et une liste de documents à réunir.</p></div>
+      <div class="step"><div class="step-number">03 — AVANCER</div><h3>Soyez accompagné</h3><p>Un accompagnement administratif adapté à vos besoins.</p></div>
+      <div class="step"><div class="step-number">04 — REPARTIR</div><h3>Reprenez la main</h3><p>Un suivi pour organiser les changements de votre nouvelle vie.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="offres">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">Nos accompagnements</div>
+      <h2>Des tarifs simples et transparents</h2>
+      <p>Vous choisissez le niveau d'accompagnement dont vous avez besoin. Le diagnostic initial reste gratuit.</p>
+    </div>
+
+    <div class="prices">
+      <article class="price-card">
+        <span class="tag">Pour commencer</span>
+        <h3>CAP DÉCOUVERTE</h3>
+        <div class="price">0 €</div>
+        <p>Faire le point sur sa situation.</p>
+        <ul>
+          <li>Diagnostic initial</li>
+          <li>Première feuille de route</li>
+          <li>Liste indicative des documents</li>
+          <li>Premiers repères sur les frais</li>
+          <li>Orientations utiles</li>
+        </ul>
+        <a class="btn secondary" href="#diagnostic">Commencer</a>
+      </article>
+
+      <article class="price-card">
+        <span class="tag">Autonomie</span>
+        <h3>CAP ESSENTIEL</h3>
+        <div class="price">29 €</div>
+        <p>Organiser ses démarches.</p>
+        <ul>
+          <li>Parcours administratif guidé</li>
+          <li>Checklist personnalisée</li>
+          <li>Modèles de courriers administratifs</li>
+          <li>Tableau de suivi</li>
+        </ul>
+        <a class="btn secondary" href="#diagnostic">En savoir plus</a>
+      </article>
+
+      <article class="price-card featured">
+        <span class="tag">Le plus complet</span>
+        <h3>CAP SÉRÉNITÉ</h3>
+        <div class="price">79 €</div>
+        <p>Être accompagné dans l'organisation.</p>
+        <ul>
+          <li>Tout CAP ESSENTIEL</li>
+          <li>Un rendez-vous administratif</li>
+          <li>Organisation des documents</li>
+          <li>Vérification de complétude</li>
+          <li>Deux échanges de suivi</li>
+        </ul>
+        <a class="btn teal" href="#diagnostic">En savoir plus</a>
+      </article>
+
+      <article class="price-card">
+        <span class="tag">Accompagnement renforcé</span>
+        <h3>CAP REPARTIR</h3>
+        <div class="price">149 €</div>
+        <p>Être accompagné dans la durée.</p>
+        <ul>
+          <li>Tout CAP SÉRÉNITÉ</li>
+          <li>Deux rendez-vous administratifs</li>
+          <li>Suivi administratif de 60 jours</li>
+          <li>Organisation des changements</li>
+          <li>Bilan administratif</li>
+        </ul>
+        <a class="btn secondary" href="#diagnostic">En savoir plus</a>
+      </article>
+    </div>
+
+    <p class="disclaimer">Tarifs indicatifs de lancement, à confirmer avant commercialisation. Le périmètre exact, les durées et les conditions de chaque prestation devront être précisés. Les frais d'avocat, de notaire et autres frais légaux ne sont pas inclus.</p>
+  </div>
+</section>
+
+<section id="observatoire" class="white">
+  <div class="container observer">
+    <div>
+      <div class="eyebrow">Notre engagement citoyen</div>
+      <h2>LE JUSTE PRIX<br>L'Observatoire CAP SÉPARATION</h2>
+      <p>Combien coûte réellement une séparation ? Quels frais sont obligatoires ? Quelles dépenses sont facultatives ? Existe-t-il des démarches gratuites ou moins coûteuses ?</p>
+      <p>Notre ambition est de collecter des données anonymisées, de comparer les coûts et de rendre les informations plus lisibles pour tous.</p>
+      <p><strong>Comprendre ce que l'on paie. Savoir ce qui est obligatoire. Refuser les dépenses injustifiées.</strong></p>
+      <a class="btn secondary" href="#mission">Découvrir notre engagement</a>
+    </div>
+    <div class="observer-visual">
+      <span>Le juste prix</span>
+      <strong>Plus de transparence.<br>Moins de dépenses subies.</strong>
+      <p>Un observatoire indépendant, documenté et accessible à tous.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">Pourquoi CAP SÉPARATION ?</div>
+      <h2>Notre mission : rendre les séparations plus accessibles</h2>
+      <p>Nous voulons contribuer à une société où chacun peut traverser une séparation avec davantage de clarté, de dignité et de sérénité.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="icon">⚖️</div><h3>Un prix plus juste</h3><p>Identifier les frais obligatoires, comprendre les tarifs et éviter les dépenses inutiles.</p></article>
+      <article class="card"><div class="icon">🤝</div><h3>Un accompagnement humain</h3><p>Proposer une aide administrative accessible, claire et respectueuse de chaque situation.</p></article>
+      <article class="card"><div class="icon">👨‍👩‍👧</div><h3>La place des enfants</h3><p>Rappeler l'importance de préserver leur intérêt et de limiter les tensions qui les affectent.</p></article>
+      <article class="card"><div class="icon">🔎</div><h3>La transparence</h3><p>Documenter les coûts et publier une méthodologie compréhensible et vérifiable.</p></article>
+      <article class="card"><div class="icon">🏛️</div><h3>Faire évoluer les choses</h3><p>Porter des propositions concrètes de simplification auprès des institutions.</p></article>
+      <article class="card"><div class="icon">🧭</div><h3>La neutralité</h3><p>Accompagner sans prendre parti et sans se substituer aux avocats, notaires ou médiateurs.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostic">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">CAP DÉCOUVERTE — Gratuit et sans compte</div>
+      <h2>Où en êtes-vous aujourd'hui ?</h2>
+      <p>Répondez à quelques questions simples. Votre première feuille de route sera générée directement à l'écran.</p>
+    </div>
+
+    <div class="diagnostic-shell">
+      <div id="quiz">
+        <div class="diagnostic-top">
+          <strong>Votre diagnostic CAP</strong>
+          <span class="question-count" id="questionCount">Question 1 / 8</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div id="questionArea">
+          <div class="question-title" id="questionTitle"></div>
+          <div class="question-help" id="questionHelp"></div>
+          <div class="options" id="options"></div>
+        </div>
+        <div class="diagnostic-actions">
+          <button class="btn secondary" id="prevBtn" type="button">Précédent</button>
+          <button class="btn teal" id="nextBtn" type="button" disabled>Continuer</button>
+        </div>
+        <p class="disclaimer">Vos réponses restent dans cette page. Elles ne sont pas transmises à CAP SÉPARATION ni enregistrées sur un serveur. Ne saisissez aucun nom, adresse ou document personnel.</p>
+      </div>
+
+      <div class="result" id="result">
+        <div class="eyebrow">Votre première feuille de route</div>
+        <h2 id="resultTitle">Votre situation</h2>
+        <p id="resultIntro"></p>
+        <div id="resultContent"></div>
+        <div class="result-actions no-print">
+          <button class="btn teal" type="button" onclick="window.print()">Enregistrer en PDF</button>
+          <button class="btn secondary" type="button" id="copyBtn">Copier ma synthèse</button>
+          <button class="btn secondary" type="button" id="restartBtn">Recommencer</button>
+        </div>
+        <p class="disclaimer">Cette feuille de route est une information générale et un outil d'organisation administrative. Elle ne constitue pas un conseil juridique personnalisé et ne remplace pas l'avis d'un avocat, d'un notaire ou d'un professionnel compétent. Les démarches exactes dépendent de votre situation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ressources" class="white">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">Pour aller plus loin</div>
+      <h2>Des ressources fiables pour vous informer</h2>
+      <p>Pour les démarches et les règles applicables, privilégiez les sources officielles.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="icon">🏛️</div><h3>Service Public</h3><p>Informations officielles sur les démarches administratives, le divorce, le PACS et la famille.</p><a href="https://www.service-public.fr/" target="_blank" rel="noopener">Consulter le site ↗</a></article>
+      <article class="card"><div class="icon">⚖️</div><h3>Justice.fr</h3><p>Comprendre les procédures et trouver des informations sur les services de la justice.</p><a href="https://www.justice.fr/" target="_blank" rel="noopener">Consulter le site ↗</a></article>
+      <article class="card"><div class="icon">📚</div><h3>Légifrance</h3><p>Accéder aux textes officiels et aux dispositions législatives et réglementaires.</p><a href="https://www.legifrance.gouv.fr/" target="_blank" rel="noopener">Consulter le site ↗</a></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container faq">
+    <div class="section-intro center">
+      <div class="eyebrow">Vos questions</div>
+      <h2>Questions fréquentes</h2>
+    </div>
+    <details><summary>CAP SÉPARATION est-il un cabinet d'avocats ?</summary><p>Non. CAP SÉPARATION propose un accompagnement administratif et des informations générales. Les consultations juridiques et les actes relevant des professionnels habilités ne sont pas proposés par CAP.</p></details>
+    <details><summary>Dois-je déjà avoir décidé de me séparer ?</summary><p>Non. Le diagnostic peut vous aider à identifier les sujets à clarifier, même si vous êtes encore en réflexion.</p></details>
+    <details><summary>Le diagnostic est-il payant ?</summary><p>Non. CAP DÉCOUVERTE est gratuit et ne nécessite pas de création de compte.</p></details>
+    <details><summary>CAP SÉPARATION remplace-t-il mon avocat ?</summary><p>Non. En cas de divorce, les obligations de représentation par avocat doivent être respectées. CAP ne remplace aucun professionnel du droit.</p></details>
+    <details><summary>Mes réponses sont-elles enregistrées ?</summary><p>Dans cette version de démonstration, non. Les réponses sont conservées uniquement dans la mémoire temporaire de la page et disparaissent lorsque vous fermez ou actualisez celle-ci.</p></details>
+  </div>
+</section>
+
+<section class="navy">
+  <div class="container center">
+    <div class="eyebrow" style="color:#a7d0c4">Un premier pas, simplement</div>
+    <h2>Vous n'avez pas à tout régler aujourd'hui.</h2>
+    <p>Commencez par comprendre votre situation. Le reste viendra étape par étape.</p>
+    <a href="#diagnostic" class="btn gold">Faire mon diagnostic gratuit</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="color:white">CAP <span>SÉPARATION</span></div>
+        <p>Se séparer dignement. Recommencer sereinement.</p>
+        <p>Un accompagnement administratif accessible, humain et transparent.</p>
+      </div>
+      <div>
+        <div class="footer-title">Découvrir</div>
+        <p><a href="#fonctionnement">Fonctionnement</a></p>
+        <p><a href="#offres">Nos offres</a></p>
+        <p><a href="#observatoire">L'Observatoire</a></p>
+      </div>
+      <div>
+        <div class="footer-title">Informations</div>
+        <p><a href="#confidentialite">Confidentialité</a></p>
+        <p><a href="#mentions">Mentions légales</a></p>
+        <p><a href="mailto:contact@cap-separation.fr">Nous contacter</a></p>
+      </div>
+    </div>
+    <div id="confidentialite" class="smallprint">
+      CONFIDENTIALITÉ — Cette maquette ne transmet aucune réponse du diagnostic à un serveur.
+      Avant toute commercialisation, les traitements de données, les durées de conservation,
+      les prestataires et les mesures de sécurité devront être définis et documentés conformément au RGPD.
+    </div>
+    <div id="mentions" class="smallprint">
+      MENTIONS LÉGALES — Informations à compléter avant mise en ligne : identité de l'éditeur,
+      forme juridique, adresse du siège, numéro d'immatriculation, coordonnées de contact,
+      hébergeur et directeur de publication.
+    </div>
+    <div class="smallprint">© <span id="year"></span> CAP SÉPARATION — Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  {
+    key:"status",
+    title:"Quelle est votre situation actuelle ?",
+    help:"Choisissez la situation qui correspond le mieux à votre cas.",
+    options:[
+      ["marie","Je suis marié(e)","Nous sommes mariés civilement."],
+      ["pacs","Nous sommes pacsés","Nous avons conclu un PACS."],
+      ["concubinage","Nous vivons en concubinage","Nous ne sommes ni mariés ni pacsés."],
+      ["separe","Nous sommes déjà séparés","La séparation est déjà effective."],
+      ["incertain","Je ne sais pas encore","Je souhaite d'abord faire le point."]
+    ]
+  },
+  {
+    key:"stage",
+    title:"Où en êtes-vous dans votre réflexion ?",
+    help:"Il n'y a pas de bonne ou de mauvaise réponse.",
+    options:[
+      ["reflexion","Je réfléchis à une séparation","Je ne sais pas encore quelle décision prendre."],
+      ["decision","La décision est prise","Je souhaite organiser les prochaines étapes."],
+      ["accord","Nous sommes d'accord sur le principe","Nous voulons avancer ensemble."],
+      ["partiel","Nous sommes d'accord sur certains points","Il reste des sujets à discuter."],
+      ["desaccord","Nous ne sommes pas d'accord","La situation est conflictuelle ou bloquée."],
+      ["engage","Les démarches sont déjà engagées","Des professionnels ou organismes sont déjà impliqués."]
+    ]
+  },
+  {
+    key:"children",
+    title:"Avez-vous des enfants ensemble ?",
+    help:"Cette information permet d'identifier certains points de vigilance généraux.",
+    options:[
+      ["oui","Oui","Nous avons un ou plusieurs enfants ensemble."],
+      ["non","Non","Nous n'avons pas d'enfants ensemble."]
+    ]
+  },
+  {
+    key:"agreement",
+    title:"Comment décririez-vous votre niveau d'accord ?",
+    help:"Répondez selon la situation actuelle.",
+    options:[
+      ["complet","Nous sommes d'accord sur l'essentiel","Les principaux sujets sont discutés."],
+      ["partiel","Nous avons des accords partiels","Certains points restent à régler."],
+      ["faible","Nous avons des désaccords importants","Nous ne parvenons pas à trouver un accord."],
+      ["inconnu","Je ne sais pas encore","La discussion n'a pas vraiment commencé."]
+    ]
+  },
+  {
+    key:"professional",
+    title:"Avez-vous déjà contacté un professionnel ?",
+    help:"Plusieurs réponses peuvent être utiles, choisissez la plus proche.",
+    options:[
+      ["avocat","Un avocat","J'ai déjà pris contact avec un avocat."],
+      ["notaire","Un notaire","J'ai déjà pris contact avec un notaire."],
+      ["mediation","Un médiateur familial","Une démarche de médiation est envisagée ou commencée."],
+      ["aucun","Personne pour le moment","Je n'ai encore contacté aucun professionnel."],
+      ["autre","Un autre interlocuteur","Association, service social ou autre."]
+    ]
+  },
+  {
+    key:"assets",
+    title:"Votre situation matérielle comporte-t-elle des éléments à organiser ?",
+    help:"Cela peut concerner le logement, les comptes, les crédits ou les biens.",
+    options:[
+      ["immobilier","Un logement ou un bien immobilier","Maison, appartement, prêt immobilier, indivision."],
+      ["finances","Des comptes, crédits ou dépenses communes","Comptes bancaires, emprunts, abonnements."],
+      ["both","Plusieurs de ces éléments","Logement, biens et finances."],
+      ["simple","Peu de biens ou de dépenses communes","La situation matérielle semble assez simple."],
+      ["unknown","Je ne sais pas encore","J'ai besoin de faire l'inventaire."]
+    ]
+  },
+  {
+    key:"need",
+    title:"Quel est votre besoin principal aujourd'hui ?",
+    help:"Cela nous aide à orienter votre première feuille de route.",
+    options:[
+      ["understand","Comprendre les étapes","Je veux savoir par où commencer."],
+      ["cost","Évaluer les coûts","Je veux anticiper les dépenses."],
+      ["documents","Organiser mes documents","Je veux préparer mon dossier."],
+      ["admin","Gérer les démarches administratives","Je veux être accompagné dans l'organisation."],
+      ["human","Être écouté et orienté","J'ai besoin d'un interlocuteur."]
+    ]
+  },
+  {
+    key:"safety",
+    title:"Vous sentez-vous en sécurité dans votre situation actuelle ?",
+    help:"Cette question est facultative. Elle permet de faire apparaître des informations de sécurité si nécessaire. Vos réponses ne sont pas transmises.",
+    options:[
+      ["oui","Oui, je me sens en sécurité","Je ne crains pas pour ma sécurité."],
+      ["non","Non, je ne me sens pas en sécurité","Je crains une réaction, des violences ou une situation dangereuse."],
+      ["incertain","Je ne sais pas / je préfère ne pas répondre","Je ne souhaite pas me prononcer."]
+    ]
+  }
+];
+
+const answers = {};
+let current = 0;
+
+const questionTitle = document.getElementById("questionTitle");
+const questionHelp = document.getElementById("questionHelp");
+const optionsEl = document.getElementById("options");
+const questionCount = document.getElementById("questionCount");
+const progressFill = document.getElementById("progressFill");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function renderQuestion(){
+  const q = questions[current];
+  questionTitle.textContent = q.title;
+  questionHelp.textContent = q.help;
+  questionCount.textContent = `Question ${current+1} / ${questions.length}`;
+  progressFill.style.width = `${((current+1)/questions.length)*100}%`;
+  prevBtn.disabled = current === 0;
+  nextBtn.textContent = current === questions.length-1 ? "Voir ma feuille de route" : "Continuer";
+  nextBtn.disabled = !answers[q.key];
+  optionsEl.innerHTML = "";
+
+  q.options.forEach(opt=>{
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "option" + (answers[q.key] === opt[0] ? " selected" : "");
+    button.setAttribute("aria-pressed", answers[q.key] === opt[0] ? "true" : "false");
+
+    const strong = document.createElement("strong");
+    strong.textContent = opt[1];
+    const span = document.createElement("span");
+    span.textContent = opt[2];
+    button.append(strong,span);
+
+    button.addEventListener("click",()=>{
+      answers[q.key] = opt[0];
+      renderQuestion();
+    });
+    optionsEl.appendChild(button);
+  });
+}
+
+prevBtn.addEventListener("click",()=>{
+  if(current>0){current--;renderQuestion();}
+});
+nextBtn.addEventListener("click",()=>{
+  if(!answers[questions[current].key])return;
+  if(current<questions.length-1){
+    current++;
+    renderQuestion();
+  }else{
+    showResult();
+  }
+});
+
+function getLabel(key){
+  const q = questions.find(x=>x.key===key);
+  const option = q.options.find(x=>x[0]===answers[key]);
+  return option ? option[1] : "Non renseigné";
+}
+
+function makeList(items){
+  return "<ul>"+items.map(x=>`<li>${x}</li>`).join("")+"</ul>";
+}
+
+function showResult(){
+  document.getElementById("quiz").classList.add("hidden");
+  const result = document.getElementById("result");
+  result.style.display = "block";
+
+  const status = answers.status;
+  const children = answers.children === "oui";
+  const assets = answers.assets;
+  const safety = answers.safety;
+
+  document.getElementById("resultTitle").textContent =
+    status==="marie" ? "Vous êtes marié(e)" :
+    status==="pacs" ? "Vous êtes pacsé(e)" :
+    status==="concubinage" ? "Vous vivez en concubinage" :
+    status==="separe" ? "Vous êtes déjà séparés" :
+    "Vous souhaitez faire le point";
+
+  document.getElementById("resultIntro").textContent =
+    "Voici une première synthèse de vos réponses et des points à organiser. Cette feuille de route est indicative : elle ne remplace pas une analyse juridique de votre situation.";
+
+  let html = "";
+
+  html += `<div class="result-block"><h4>Votre situation déclarée</h4>
+    <p><strong>Statut :</strong> ${getLabel("status")}<br>
+    <strong>Avancement :</strong> ${getLabel("stage")}<br>
+    <strong>Enfants :</strong> ${getLabel("children")}<br>
+    <strong>Accord :</strong> ${getLabel("agreement")}<br>
+    <strong>Professionnel déjà contacté :</strong> ${getLabel("professional")}<br>
+    <strong>Situation matérielle :</strong> ${getLabel("assets")}<br>
+    <strong>Besoin prioritaire :</strong> ${getLabel("need")}</p></div>`;
+
+  if(safety==="non"){
+    html += `<div class="safety-alert">
+      <h3>Votre sécurité passe avant les démarches administratives</h3>
+      <p>Si vous êtes en danger immédiat, appelez le 17 ou le 112. Si vous ne pouvez pas parler, le 114 peut être contacté par SMS.</p>
+      <p>Si un enfant est en danger, appelez le 119.</p>
+      <p>Le 3919 est un service d'écoute et d'orientation pour les femmes victimes de violences. Ce n'est pas un service d'urgence.</p>
+      <p>Évitez d'engager une démarche qui pourrait augmenter le danger. Cherchez si possible un accompagnement spécialisé et un moyen de communication sûr.</p>
+      <p><strong>Nous vous conseillons de suspendre ici le parcours commercial ordinaire et de privilégier votre sécurité.</strong></p>
+      </div>`;
+  }else if(safety==="incertain"){
+    html += `<div class="notice"><strong>Point de vigilance :</strong> si vous avez un doute sur votre sécurité, vous pouvez prendre conseil auprès d'un service spécialisé avant d'engager des démarches ou une médiation.</div>`;
+  }else{
+    html += `<div class="result-block"><h4>Sécurité</h4><p>Vous indiquez vous sentir en sécurité actuellement. Si votre situation évolue, votre sécurité doit rester prioritaire.</p></div>`;
+  }
+
+  let steps = [];
+  if(status==="marie"){
+    steps.push("Identifier le type de procédure envisageable avec un avocat : un divorce nécessite un accompagnement juridique adapté.");
+    steps.push("En cas de divorce par consentement mutuel, chaque époux doit normalement avoir son propre avocat ; la convention est déposée chez un notaire selon les conditions légales.");
+    steps.push("Faire l'inventaire des documents d'état civil, revenus, charges, comptes et éléments patrimoniaux utiles.");
+  }else if(status==="pacs"){
+    steps.push("Vérifier la procédure de dissolution du PACS selon que la démarche est conjointe ou individuelle.");
+    steps.push("Identifier les conséquences pratiques concernant le logement, les comptes et les dépenses communes.");
+    steps.push("Préparer les changements administratifs à effectuer après la dissolution.");
+  }else if(status==="concubinage"){
+    steps.push("Faire l'inventaire des engagements communs : logement, comptes, crédits, assurances et abonnements.");
+    steps.push("Identifier les contrats à modifier ou à résilier et les responsabilités de chacun.");
+    steps.push("En présence d'un bien immobilier commun, demander un avis professionnel adapté avant toute décision.");
+  }else if(status==="separe"){
+    steps.push("Faire le point sur les démarches déjà réalisées et celles qui restent à effectuer.");
+    steps.push("Centraliser les justificatifs, courriers, contrats et informations utiles.");
+    steps.push("Organiser les changements administratifs et financiers qui restent à traiter.");
+  }else{
+    steps.push("Clarifier votre situation personnelle et les sujets qui vous préoccupent.");
+    steps.push("Recueillir des informations générales auprès de sources officielles.");
+    steps.push("Prendre le temps de faire un inventaire des sujets administratifs, matériels et familiaux.");
+  }
+
+  if(children){
+    steps.push("Avec des enfants, identifier les sujets à organiser dans leur intérêt : résidence, scolarité, santé, frais et communication parentale. Les décisions juridiques doivent être abordées avec un professionnel compétent.");
+  }
+  if(assets==="immobilier" || assets==="both"){
+    steps.push("Rassembler les informations relatives au logement, au titre de propriété, au crédit et aux éventuelles charges communes.");
+  }
+  if(assets==="finances" || assets==="both"){
+    steps.push("Lister les comptes, emprunts, prélèvements, assurances et abonnements communs.");
+  }
+  if(assets==="unknown"){
+    steps.push("Réaliser un inventaire simple des biens, comptes, contrats, crédits et dépenses partagés.");
+  }
+  if(answers.agreement==="faible" || answers.stage==="desaccord"){
+    steps.push("Éviter de prendre des engagements importants sous pression. Demander un conseil juridique individuel si nécessaire. Une médiation n'est pas adaptée à toutes les situations, notamment en cas de violences ou d'emprise.");
+  }
+
+  html += `<div class="result-block"><h4>Vos premières étapes</h4>${makeList(steps)}</div>`;
+
+  let docs = [
+    "Pièce d'identité et justificatifs d'état civil pertinents",
+    "Justificatif de domicile et informations sur le logement",
+    "Revenus, charges et principales dépenses",
+    "Contrats, assurances, crédits et abonnements concernés"
+  ];
+  if(children)docs.push("Documents utiles concernant les enfants, en limitant la collecte aux informations nécessaires.");
+  if(assets==="immobilier" || assets==="both")docs.push("Documents relatifs au logement et aux biens immobiliers.");
+  html += `<div class="result-block"><h4>Documents à envisager de réunir</h4>${makeList(docs)}</div>`;
+
+  let costs = [
+    "Les honoraires d'avocat sont libres et varient selon le professionnel et la complexité du dossier.",
+    "Certains frais peuvent être obligatoires ou réglementés ; d'autres prestations sont facultatives.",
+    "Les frais de notaire, de partage ou liés à un bien immobilier dépendent de votre situation."
+  ];
+  html += `<div class="result-block"><h4>Anticiper le budget</h4>${makeList(costs)}
+    <p>Demandez un devis écrit détaillant les prestations incluses, les frais supplémentaires possibles et les modalités de facturation. Comparez des offres de périmètre équivalent.</p></div>`;
+
+  html += `<div class="result-block"><h4>Votre priorité déclarée</h4><p>${getLabel("need")}. Nous vous recommandons de commencer par ce sujet et de ne pas chercher à tout traiter en même temps.</p></div>`;
+
+  html += `<div class="result-block"><h4>Les aides et interlocuteurs à connaître</h4>
+    <p>Selon votre situation, vous pouvez vous renseigner sur l'aide juridictionnelle, votre éventuelle protection juridique, les points-justice, les services sociaux et les associations d'accompagnement. L'éligibilité dépend de critères propres à chaque dispositif.</p>
+    <p><a href="https://www.service-public.fr/" target="_blank" rel="noopener">Service Public</a> ·
+    <a href="https://www.justice.fr/" target="_blank" rel="noopener">Justice.fr</a></p></div>`;
+
+  document.getElementById("resultContent").innerHTML = html;
+  result.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function getSummaryText(){
+  const lines = [
+    "CAP SÉPARATION — MA PREMIÈRE FEUILLE DE ROUTE",
+    "",
+    "Situation : "+getLabel("status"),
+    "Avancement : "+getLabel("stage"),
+    "Enfants : "+getLabel("children"),
+    "Niveau d'accord : "+getLabel("agreement"),
+    "Professionnel contacté : "+getLabel("professional"),
+    "Situation matérielle : "+getLabel("assets"),
+    "Besoin principal : "+getLabel("need"),
+    "Sécurité : "+getLabel("safety"),
+    "",
+    "Cette synthèse est indicative et ne constitue pas un conseil juridique personnalisé."
+  ];
+  return lines.join("\n");
+}
+
+document.getElementById("copyBtn").addEventListener("click",async()=>{
+  const text = getSummaryText();
+  try{
+    await navigator.clipboard.writeText(text);
+    document.getElementById("copyBtn").textContent = "Synthèse copiée ✓";
+  }catch(e){
+    window.prompt("Copiez votre synthèse :",text);
+  }
+});
+
+document.getElementById("restartBtn").addEventListener("click",()=>{
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  current=0;
+  document.getElementById("result").style.display="none";
+  document.getElementById("quiz").classList.remove("hidden");
+  renderQuestion();
+  document.getElementById("diagnostic").scrollIntoView({behavior:"smooth"});
+});
+
+document.getElementById("menuBtn").addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.toggle("open");
+});
+document.querySelectorAll(".nav-links a").forEach(a=>{
+  a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open"));
+});
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderQuestion();
+</script>
+</body>
+</html>
